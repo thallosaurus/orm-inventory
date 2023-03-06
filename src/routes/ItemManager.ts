@@ -7,6 +7,12 @@ export default (app: Express) => {
 
     route.use(express.json());
 
+    route.get("/", async (req, res) => {
+        let items = await Item.findAll();
+
+        res.send(items);
+    });
+
     //get specified item
     route.get("/:id", async (req, res) => {
         let item = await Item.findByPk(req.params.id);
@@ -46,14 +52,15 @@ export default (app: Express) => {
         }
     });
 
-    app.use("/items", route);
+    app.use("/things", route);
 }
 
 interface ItemRequest extends express.Request {
     body: ItemRequestBody;
 }
 
-interface ItemRequestBody {
+export interface ItemRequestBody {
     name: string,
-    ean: number
+    ean: number,
+    id: null | number
 }

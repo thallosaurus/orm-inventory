@@ -1,10 +1,14 @@
 import express, { NextFunction } from 'express';
+import cors from 'cors';
 //import { init } from './database';
 
 import ItemManager from './routes/ItemManager';
 import LocationManager from './routes/LocationManager';
+import Item from './models/Item';
 
 let app = express();
+
+app.use(cors())
 
 //init database
 //init();

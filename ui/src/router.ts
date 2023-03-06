@@ -1,5 +1,6 @@
 import Home from "./routes/Home.vue";
-import Things from "./routes/Things.vue";
+import ThingList from "./routes/ThingsList.vue";
+import Thing from "./routes/Thing.vue"
 import Locations from "./routes/Locations.vue";
 import { createRouter, createMemoryHistory, createWebHistory } from 'vue-router';
 
@@ -11,8 +12,13 @@ const routes = [
     },
     {
         path: "/things",
-        component: Things,
-        name: "Things"
+        component: ThingList,
+        name: "ThingsList"
+    },
+    {
+        path: "/things/:id",
+        component: Thing,
+        name: "Thing"
     },
     {
         path: "/locations",
